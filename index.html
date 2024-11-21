@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Learning Platform</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link small {
+            display: block;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-link:hover small, .nav-link.active small {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Markdown Content Styling */
+        .content h1 { font-size: 2rem; margin-bottom: 1rem; }
+        .content h2 { font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+        .content h3 { font-size: 1.25rem; margin: 1.25rem 0 0.75rem; }
+        .content p { margin-bottom: 1rem; }
+        .content ul, .content ol { margin: 1rem 0; padding-left: 2rem; }
+        .content code { background-color: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 0.25rem; }
+        .content pre { background-color: #f1f5f9; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; }
+        .content blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1rem 0; }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .loading::after {
+            content: "Loading...";
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        /* Mermaid diagrams */
+        .mermaid {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding: 1rem;
+            }
+            .main-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="header">
+                <h1>Blockchain</h1>
+                <p>Learning Platform</p>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-unit="1">
+                        Unit 1: Consensus
+                        <small>Study of consensus problems, Byzantine Agreement, Nakamoto Consensus, and various blockchain models including PoW and PoS based systems.</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-unit="2">
+                        Unit 2: Cryptography
+                        <small>Overview of fundamental cryptographic concepts essential for cryptocurrency including hashing, signatures, encryption, and elliptic curve cryptography.</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-unit="3">
+                        Unit 3: Bitcoin
+                        <small>Comprehensive study of Bitcoin architecture including wallets, blocks, mining, transactions, and analysis of Bitcoin's key properties.</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-unit="4">
+                        Unit 4: Ethereum
+                        <small>Deep dive into Ethereum platform, covering EVM, smart contracts, Solidity programming, and blockchain scaling solutions.</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-unit="5">
+                        Unit 5: Trends and Topics
+                        <small>Advanced concepts including Zero Knowledge proofs, SNARKs, and practical blockchain applications in finance and industry.</small>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <div class="content"></div>
+            <div class="loading"></div>
+        </main>
+    </div>
+
+    <script>
+        let mermaidInitialized = false;
+
+        // Initialize mermaid first
+        async function initMermaid() {
+            try {
+                await mermaid.initialize({
+                    startOnLoad: true,
+                    theme: 'default',
+                    securityLevel: 'loose',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                });
+                mermaidInitialized = true;
+            } catch (error) {
+                console.error('Mermaid initialization failed:', error);
+            }
+        }
+
+        // Render a single mermaid diagram with retry
+        async function renderMermaidDiagram(element, retries = 3) {
+            if (!mermaidInitialized) {
+                if (retries <= 0) {
+                    element.innerHTML = 'Failed to initialize mermaid';
+                    return;
+                }
+                await new Promise(resolve => setTimeout(resolve, 100));
+                return renderMermaidDiagram(element, retries - 1);
+            }
+
+            try {
+                const graphDefinition = element.textContent;
+                element.textContent = '';
+                const id = `mermaid-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+                const { svg } = await mermaid.render(id, graphDefinition);
+                element.innerHTML = svg;
+            } catch (error) {
+                console.error('Mermaid rendering failed:', error);
+                element.innerHTML = 'Failed to render diagram';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize mermaid first
+            await initMermaid();
+
+            // Configure marked
+            marked.setOptions({
+                highlight: function(code, language) {
+                    if (language === 'mermaid') {
+                        return `<pre class="mermaid">${code}</pre>`;
+                    }
+                    return code;
+                }
+            });
+
+            // DOM elements
+            const contentDiv = document.querySelector('.content');
+            const loadingDiv = document.querySelector('.loading');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Load markdown content
+            async function loadUnit(unitNumber) {
+                try {
+                    loadingDiv.style.display = 'block';
+                    contentDiv.style.display = 'none';
+
+                    const response = await fetch(`Unit_${unitNumber}.md`);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const markdown = await response.text();
+
+                    // Convert markdown to HTML
+                    contentDiv.innerHTML = marked.parse(markdown);
+
+                    // Render all mermaid diagrams
+                    const mermaidDiagrams = contentDiv.querySelectorAll('.mermaid:not(.mermaid-rendered)');
+                    for (const element of mermaidDiagrams) {
+                        element.classList.add('mermaid-rendered');
+                        await renderMermaidDiagram(element);
+                    }
+
+                    contentDiv.style.display = 'block';
+                } catch (error) {
+                    contentDiv.innerHTML = `<p>Error loading Unit ${unitNumber}: ${error.message}</p>`;
+                    contentDiv.style.display = 'block';
+                } finally {
+                    loadingDiv.style.display = 'none';
+                }
+            }
+
+            // Navigation handling
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    const unitNumber = link.dataset.unit;
+                    loadUnit(unitNumber);
+                });
+            });
+
+            // Load first unit by default
+            loadUnit(1);
+        });
+    </script>
+</body>
+</html>
